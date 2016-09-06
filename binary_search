@@ -1,0 +1,10 @@
+function binarySearch(arr, num, index) {
+        // No need to write "var index", it is initialized in the line above.
+	index = index || 0;
+	if (arr.length === 0) return -1;
+	if (arr[0] === num) return index;
+	else {
+		index++;
+		return binarySearch(arr.slice(1), num, index);
+	}
+}
