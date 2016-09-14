@@ -1,0 +1,28 @@
+
+// let's set up some inputs, tests n stuff
+// https://www.hackerrank.com/challenges/repeated-string
+
+[
+  { 'string': "aba", 'count': 10, 'expectedResult': 7 },
+  { 'string': "a", 'count': 1000000000000, 'expectedResult': 1000000000000 }
+].forEach(function(testData) {
+  console.log("\n");
+  console.log("myFunkyFunc actual result: " + myFunkyFunc(testData['string'], testData['count']));
+  console.log("expected: " + testData['expectedResult']);
+  console.log("\n");
+});
+
+
+function myFunkyFunc(inputStr, count) {
+  var aCount = inputStr.split("").filter(function(el) { return 'a' === el; }).length;
+  var multiplier = Math.floor(count / inputStr.length);
+  var countWithoutRemainder = aCount * multiplier;
+  var remainder = count % inputStr.length;
+  var result = countWithoutRemainder;
+  for (var i = 0; i < remainder; i++) {
+    if (inputStr[i] === 'a') {
+      result++;
+    }
+  }
+  return result;
+}
